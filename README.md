@@ -1,2 +1,2 @@
 # MISW-4203-Mobile
-MISW-4203 Ingeniería de Software para aplicaciones Móviles, Grupo Irina, Pedro y ....
+MISW-4203 Ingeniería de Software para aplicaciones Móviles
