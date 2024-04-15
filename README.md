@@ -38,6 +38,7 @@ La empresa The Software Design Company (TSDC) nos ha contratado para desarrollar
     * [**Backlog de Producto**](https://github.com/users/pbuitragom/projects/3)
       * [**Backlog de Producto - Planeación de Iteraciones**](link-aqui)
       * [Reunión de equipo W1 - Backlog, Planning y estimación](https://www.youtube.com/watch?v=bIXeD92oZJo&feature=youtu.be)
+      * [Reunión de equipo W2 - Refinamiento de Inception según recomendaciones](https://www.youtube.com/watch?v=M7cYbHpJv3Q)
     * [**Historias de Usuario**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Historias-de-Usuario)
     * [**Diseño de UX/UI**](https://www.figma.com/proto/jrm7H4gss8AXtnhRC3Ar2L/Material-3-Design-Kit-(Community)?node-id=11-1833&scaling=min-zoom&page-id=11%3A1833&starting-point-node-id=57%3A47160)
        * [**Diseño de UX/UI - Prototipo digital - Wireframe navegable**](https://www.figma.com/proto/jrm7H4gss8AXtnhRC3Ar2L/Material-3-Design-Kit-(Community)?node-id=11-1833&scaling=min-zoom&page-id=11%3A1833&starting-point-node-id=57%3A47160)
