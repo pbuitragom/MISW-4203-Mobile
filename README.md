@@ -36,7 +36,7 @@ La empresa The Software Design Company (TSDC) nos ha contratado para desarrollar
       * [**Tablero de Tareas**](https://github.com/users/pbuitragom/projects/3)
       * [**Flujos de trabajo**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Flujos-de-Trabajo)
     * [**Backlog de Producto**](https://github.com/users/pbuitragom/projects/3)
-      * [**Backlog de Producto - Planeación de Iteraciones**](link-aqui)
+      * [**Backlog de Producto - Planeación de Iteraciones**](https://github.com/users/pbuitragom/projects/3)
       * [Reunión de equipo W1 - Backlog, Planning y estimación](https://www.youtube.com/watch?v=bIXeD92oZJo&feature=youtu.be)
       * [Reunión de equipo W2 - Refinamiento de Inception según recomendaciones](https://www.youtube.com/watch?v=M7cYbHpJv3Q)
     * [**Historias de Usuario**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Historias-de-Usuario)
