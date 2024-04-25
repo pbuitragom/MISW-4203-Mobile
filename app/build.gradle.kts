@@ -67,5 +67,7 @@ dependencies {
 
     // Otras dependencias del lifecycle que puedas necesitar
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    //ksp("com.github.bumptech.glide:ksp:4.12.0")
 
 }

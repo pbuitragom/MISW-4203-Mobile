@@ -18,7 +18,7 @@ class AlbumRepositoryImpl(private val context: Context) : AlbumRepository {
 
     override fun getAlbum(): LiveData<Album> {
         val liveData = MutableLiveData<Album>()
-        //Po implementar
+        //Por implementar
         return liveData
     }
 
