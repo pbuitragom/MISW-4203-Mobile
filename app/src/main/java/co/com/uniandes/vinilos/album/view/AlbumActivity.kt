@@ -1,12 +1,6 @@
 package co.com.uniandes.vinilos.album.view
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
-import co.com.uniandes.vinilos.R
-import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel2
-
 
 
 class AlbumActivity : AppCompatActivity() {

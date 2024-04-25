@@ -16,9 +16,8 @@ import com.google.gson.reflect.TypeToken
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
-    //Funciona lateinit var albumAdapter: AlbumServiceAdapter
-    private val repository = AlbumRepositoryImpl(application)
-    val albums: LiveData<List<Album>> = repository.albumsLiveData
+    private val repository: AlbumRepository  = AlbumRepositoryImpl(application)
+    val albums: LiveData<List<Album>> = repository.getAlbums()
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -36,26 +35,7 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
 
     private fun refreshDataFromNetwork() {
 
-        //Retrofit
-        //SealedClass??
-            //Gestión de errores, con el output para gestionar httpcodes de retorno
-
         Log.e("AlbumViewModel", "Acceso al Repository para llegar al AlbumServiceAdapter")
-        /*albumAdapter = AlbumServiceAdapter(getApplication<Application>().applicationContext)
-        albumAdapter.instance.add (AlbumServiceAdapter.getAlbums(
-            {
-                val gson = Gson()
-                val albumListType = object : TypeToken<List<Album>>() {}.type
-                val albums: List<Album> = gson.fromJson(it, albumListType)
-                _albums.postValue(albums)
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
-            }
-            ,{
-                _eventNetworkError.value = true
-            })
-
-        )*/
         repository.getAlbums()
     }
 

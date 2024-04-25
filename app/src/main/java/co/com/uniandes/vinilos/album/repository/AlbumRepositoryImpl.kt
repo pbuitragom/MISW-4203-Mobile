@@ -16,7 +16,7 @@ class AlbumRepositoryImpl(private val context: Context) : AlbumRepository {
     private var albums: List<Album> = emptyList()
     val albumsLiveData = MutableLiveData<List<Album>>()
 
-    override fun getAlbum(): Album? {
+    override fun getAlbum(): LiveData<Album> {
         val liveData = MutableLiveData<Album>()
 
         /*val request = serviceAdapter.getAlbum(
@@ -31,24 +31,26 @@ class AlbumRepositoryImpl(private val context: Context) : AlbumRepository {
         )
         serviceAdapter.instance.add(request)*/
         //return liveData
-        return null
+        return liveData
     }
 
-    override fun getAlbums() {
+    override fun getAlbums(): LiveData<List<Album>> {
         val albumListType = object : TypeToken<List<Album>>() {}.type
         val request = AlbumServiceAdapter.getAlbums(
-            Response.Listener { response ->
+            { response ->
                 val gson = Gson()
-                // Deserializar la respuesta y actualizar el LiveData
                 val albums: List<Album> = gson.fromJson(response, albumListType)
-                albumsLiveData.postValue(albums)  // Actualiza LiveData con la lista de álbumes
+                albumsLiveData.postValue(albums)
                 Log.e("AlbumRepositoryImpl", "gson lo dejó como $albums")
             },
-            Response.ErrorListener { error ->
+            { error ->
                 Log.e("AlbumRepositoryImpl", "Error: ${error.toString()}")
-                albumsLiveData.postValue(emptyList())  // Publicar una lista vacía o manejar el error adecuadamente
+                albumsLiveData.postValue(emptyList())
             }
         )
         serviceAdapter.instance.add(request)
+        return albumsLiveData
     }
+
+
 }
