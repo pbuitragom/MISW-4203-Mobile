@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.album.model.Album
 import com.bumptech.glide.Glide
+import java.util.Locale
 
 
-class AlbumViewAdapter(private val context: Context, private val albums: List<Album>) :
+class AlbumViewAdapter(private val context: Context, private val albums: MutableList<Album>) :
     RecyclerView.Adapter<AlbumViewAdapter.AlbumViewHolder>() {
 
+    private var albumsFiltered: MutableList<Album> = albums
     class AlbumViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.item_album, parent, false)) {
         private var imageView: ImageView? = null
@@ -38,15 +40,36 @@ class AlbumViewAdapter(private val context: Context, private val albums: List<Al
         }
     }
 
+    fun updateData(newAlbums: List<Album>) {
+        this.albums.clear() // Limpiamos la lista existente
+        this.albums.addAll(newAlbums) // Añadimos todos los nuevos álbumes
+        this.albumsFiltered = albums.toMutableList() // Actualizamos la lista filtrada
+        notifyDataSetChanged() // Notificamos al adaptador del cambio
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return AlbumViewHolder(inflater, parent)
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        val album: Album = albums[position]
+        val album: Album = albumsFiltered[position]
         holder.bind(album)
     }
 
-    override fun getItemCount(): Int = albums.size
+    override fun getItemCount(): Int = albumsFiltered.size
+
+    fun filter(query: String) {
+        val queryString = query.lowercase(Locale.getDefault())
+        albumsFiltered = if (queryString.isEmpty()) {
+            albums
+        } else {
+            albums.filter {
+                it.name.lowercase(Locale.getDefault()).contains(queryString)
+            }.toMutableList()
+        }
+        notifyDataSetChanged()
+    }
+
+
 }

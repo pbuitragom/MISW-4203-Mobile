@@ -14,12 +14,11 @@
         app:title="Álbumes"
         app:titleTextColor="@android:color/white" />
 
-    <EditText
-        android:id="@+id/search_album"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search album"
-        android:inputType="text" />
+        android:queryHint="Buscar album" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/album_recycler_view"
