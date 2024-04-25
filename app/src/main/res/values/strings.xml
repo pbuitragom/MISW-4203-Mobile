@@ -9,4 +9,6 @@
     <string name="phone_hint">3112223344</string>
     <string name="mail_hint">example@domain.com</string>
     <string name="action_switch_layout">Cambiar actividad</string>
+    <string name="search_album">Buscar Album</string>
+
 </resources>

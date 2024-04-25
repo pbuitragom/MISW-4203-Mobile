@@ -1,11 +1,16 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.devtools.ksp") version "1.9.23-1.0.20"
 }
 
 android {
     namespace = "co.com.uniandes.vinilos"
     compileSdk = 34
+
+    buildFeatures{
+        dataBinding = true
+    }
 
     defaultConfig {
         applicationId = "co.com.uniandes.vinilos"
@@ -50,4 +55,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.room.runtime)
+    // Dependencia para el uso de viewModels
+    implementation("androidx.fragment:fragment-ktx:1.3.1") // Asegúrate de usar la versión más reciente
+
+    // Dependencias del ViewModel y LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1") // Asegúrate de usar la versión más reciente
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1") // Asegúrate de usar la versión más reciente
+    // Si estás usando Java, también necesitarás la dependencia lifecycle-extensions, que está deprecada en Kotlin
+    // implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    // Otras dependencias del lifecycle que puedas necesitar
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+
 }

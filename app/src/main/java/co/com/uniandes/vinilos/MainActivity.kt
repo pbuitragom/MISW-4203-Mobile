@@ -1,37 +1,38 @@
 package co.com.uniandes.vinilos
 
-import AlbumAdapter
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import AlbumServiceAdapter
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import co.com.uniandes.vinilos.album.model.Album
 import com.android.volley.Response
 import com.google.android.material.textfield.TextInputEditText
-import org.json.JSONObject
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class MainActivity : AppCompatActivity() {
-    lateinit var albumAdapter: AlbumAdapter
+    lateinit var albumAdapter: AlbumServiceAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        albumAdapter = AlbumAdapter(this.applicationContext)
+        albumAdapter = AlbumServiceAdapter(this.applicationContext)
 
         val getButton: Button = findViewById(R.id.fetch_button)
         val getResultTextView : TextView = findViewById(R.id.get_result_text)
         getButton.setOnClickListener {
-            albumAdapter.instance.add(AlbumAdapter.getRequest("collectors",
-                Response.Listener<String> { response ->
-                    // Display the first 500 characters of the response string.
-                    getResultTextView.text = "Response is: ${response}"
+            albumAdapter.instance.add (AlbumServiceAdapter.getAlbums(
+                {
+                    val gson = Gson()
+                    val albumListType = object : TypeToken<List<Album>>() {}.type
+                    val albums: List<Album> = gson.fromJson(it, albumListType)
+                    getResultTextView.text = "Response is: ${it}"
                 },
                 Response.ErrorListener {
                     Log.d("TAG", it.toString())
@@ -51,22 +52,13 @@ class MainActivity : AppCompatActivity() {
                 "telephone" to phoneTxt.text.toString(),
                 "email" to mailTxt.text.toString()
             )
-            albumAdapter.instance.add(AlbumAdapter.postRequest("collectors", JSONObject(postParams),
-                Response.Listener<JSONObject> { response ->
-                    // Display the first 500 characters of the response string.
-                    postResultTextView.text = "Response is: ${response.toString()}"
-                },
-                Response.ErrorListener {
-                    Log.d("TAG", it.toString())
-                    postResultTextView.text = "That didn't work!"
-                }
-            ))
+
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.layout_menu, menu)
-        supportActionBar!!.title = "Volley"
+        //supportActionBar!!.title = "Volley"
         return true
     }
 
@@ -82,3 +74,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
