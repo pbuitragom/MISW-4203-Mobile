@@ -27,7 +27,4 @@ class AlbumServiceAdapter constructor(context: Context) {
         }
 
     }
-
-
-
 }

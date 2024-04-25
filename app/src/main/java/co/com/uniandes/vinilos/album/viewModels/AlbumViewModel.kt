@@ -2,23 +2,23 @@ package co.com.uniandes.vinilos.album.viewModels
 
 import AlbumServiceAdapter
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.album.model.Album
+import co.com.uniandes.vinilos.album.repository.AlbumRepository
+import co.com.uniandes.vinilos.album.repository.AlbumRepositoryImpl
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
-    lateinit var albumAdapter: AlbumServiceAdapter
-    private val _albums = MutableLiveData<List<Album>>()
-
-    val albums: LiveData<List<Album>>
-        get() = _albums
-
+    //Funciona lateinit var albumAdapter: AlbumServiceAdapter
+    private val repository = AlbumRepositoryImpl(application)
+    val albums: LiveData<List<Album>> = repository.albumsLiveData
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -40,8 +40,8 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         //SealedClass??
             //Gestión de errores, con el output para gestionar httpcodes de retorno
 
-
-        albumAdapter = AlbumServiceAdapter(getApplication<Application>().applicationContext)
+        Log.e("AlbumViewModel", "Acceso al Repository para llegar al AlbumServiceAdapter")
+        /*albumAdapter = AlbumServiceAdapter(getApplication<Application>().applicationContext)
         albumAdapter.instance.add (AlbumServiceAdapter.getAlbums(
             {
                 val gson = Gson()
@@ -55,7 +55,8 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
                 _eventNetworkError.value = true
             })
 
-        )
+        )*/
+        repository.getAlbums()
     }
 
     fun onNetworkErrorShown() {
