@@ -1,4 +1,4 @@
-package co.com.uniandes.vinilos
+package co.com.uniandes.vinilos.album.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,10 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.com.uniandes.vinilos.R
+import co.com.uniandes.vinilos.RetrofitActivity
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
 import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel
 
-class MainActivity : AppCompatActivity() {
+
+class AlbumActivity : AppCompatActivity() {
+
     private lateinit var viewModel: AlbumViewModel
     private lateinit var viewAdapter: AlbumViewAdapter
 
@@ -86,7 +90,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
 }
-
-
