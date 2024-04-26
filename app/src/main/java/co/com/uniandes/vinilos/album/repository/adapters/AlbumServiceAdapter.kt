@@ -15,7 +15,6 @@ class AlbumServiceAdapter constructor(context: Context) {
         const val BASE_URL= "http://10.0.2.2:3000/"
         const val RESOURCE= "albums"
 
-        //Cambiar a retrofit
         fun getAlbums(responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
             return StringRequest(Request.Method.GET, BASE_URL+RESOURCE, responseListener,errorListener)
         }

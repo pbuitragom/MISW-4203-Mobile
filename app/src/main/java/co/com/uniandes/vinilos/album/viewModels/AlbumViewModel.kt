@@ -34,7 +34,6 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     }
 
     private fun refreshDataFromNetwork() {
-
         Log.e("AlbumViewModel", "Acceso al Repository para llegar al AlbumServiceAdapter")
         repository.getAlbums()
     }

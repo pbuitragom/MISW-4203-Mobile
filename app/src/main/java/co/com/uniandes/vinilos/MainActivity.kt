@@ -21,9 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-        //val getButton: Button = findViewById(R.id.fetch_button)
-        //val getResultTextView : TextView = findViewById(R.id.get_result_text)
 
         setContentView(R.layout.activity_albums)
         // Instanciación del ViewModel
@@ -77,7 +74,6 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.layout_menu, menu)
         return true
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {

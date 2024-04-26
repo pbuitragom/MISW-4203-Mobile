@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="Performer, Performer, Performer"
                 android:textAppearance="?attr/textAppearanceBody2" />
+
         </LinearLayout>
     </LinearLayout>
 
