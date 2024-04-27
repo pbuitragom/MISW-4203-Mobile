@@ -7,14 +7,15 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.com.uniandes.vinilos.album.model.Album
+import co.com.uniandes.vinilos.album.view.AlbumActivity
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
 import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AlbumListener {
     private lateinit var viewModel: AlbumViewModel
     private lateinit var viewAdapter: AlbumViewAdapter
 
@@ -28,30 +29,26 @@ class MainActivity : AppCompatActivity() {
 
         val searchView = findViewById<SearchView>(R.id.search_view)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.album_recycler_view)
-        viewAdapter = AlbumViewAdapter(this, mutableListOf())
-        recyclerView.adapter = viewAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        setupRecyclerView()
 
         // Observar los cambios en los datos del ViewModel
-        viewModel.albums.observe(this, Observer { albumList ->
+        val recyclerView = findViewById<RecyclerView>(R.id.album_recycler_view)
+        viewModel.albums.observe(this) { albumList ->
             viewAdapter.updateData(albumList.toMutableList())
             recyclerView.adapter = viewAdapter
             val currentQuery = searchView.query.toString()
             Log.e("MainActivity", "Texto para buscar ${currentQuery}")
             viewAdapter.filter(currentQuery)
-        })
+        }
 
 
-        viewModel.eventNetworkError.observe(this, Observer { isNetworkError ->
+        viewModel.eventNetworkError.observe(this) { isNetworkError ->
             if (isNetworkError) {
                 if (!viewModel.isNetworkErrorShown.value!!) {
-                    //showErrorDialog()
-                    //getResultTextView.text = "That didn't work!"
                     viewModel.onNetworkErrorShown()
                 }
             }
-        })
+        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -66,8 +63,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun showErrorDialog() {
-
+    private fun setupRecyclerView() {
+        val recyclerView = findViewById<RecyclerView>(R.id.album_recycler_view)
+        viewAdapter = AlbumViewAdapter(this, mutableListOf(), this)
+        recyclerView.adapter = viewAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -77,13 +77,31 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {
-                // Create an intent with a destination of the other Activity
+//                 Create an intent with a destination of the other Activity
                 val intent = Intent(this, RetrofitActivity::class.java)
                 startActivity(intent)
+//                val album = Album(
+//                    albumId = 1,
+//                    name =  "Buscando América",
+//                    cover = "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
+//                    releaseDate = "1984-08-01T05:00:00.000Z",
+//                    description = "Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983.",
+//                    genre = "Salsa",
+//                    recordLabel = "Elektra"
+//                )
+//                val intent = Intent(this, AlbumDetailActivity::class.java)
+//                intent.putExtra("album", album)
+//                startActivity(intent)
                 return true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun openDetailAlbum(album: Album) {
+        val intent = Intent(this, AlbumActivity::class.java)
+        intent.putExtra("album", album)
+        startActivity(intent)
     }
 
 

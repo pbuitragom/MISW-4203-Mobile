@@ -38,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
+
 }
 
 dependencies {
@@ -82,5 +86,6 @@ dependencies {
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
 
+    implementation(libs.picasso)
 
 }

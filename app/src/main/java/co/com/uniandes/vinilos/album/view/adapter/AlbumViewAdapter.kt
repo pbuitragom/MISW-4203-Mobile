@@ -6,16 +6,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import co.com.uniandes.vinilos.AlbumListener
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.album.model.Album
 import com.bumptech.glide.Glide
 import java.util.Locale
 
 
-class AlbumViewAdapter(private val context: Context, private val albums: MutableList<Album>) :
+class AlbumViewAdapter(
+    private val context: Context, private val albums: MutableList<Album>, private val listener: AlbumListener
+) :
     RecyclerView.Adapter<AlbumViewAdapter.AlbumViewHolder>() {
 
     private var albumsFiltered: MutableList<Album> = albums
+
     class AlbumViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.item_album, parent, false)) {
         private var imageView: ImageView? = null
@@ -28,14 +32,18 @@ class AlbumViewAdapter(private val context: Context, private val albums: Mutable
             detailsTextView = itemView.findViewById(R.id.album_details_text)
         }
 
-        fun bind(album: Album) {
+        fun bind(album: Album, listener: AlbumListener) {
             titleTextView?.text = album.name
-            detailsTextView?.text = album.genre  // Ajusta esto según cómo quieras mostrar los detalles
+            detailsTextView?.text =
+                album.genre  // Ajusta esto según cómo quieras mostrar los detalles
             imageView?.let {
                 Glide.with(itemView.context)
                     .load(album.cover)
                     //.placeholder(R.drawable.ic_album_placeholder) // Reemplazar con una imagen de placeholder
                     .into(it)
+            }
+            itemView.setOnClickListener {
+                listener.openDetailAlbum(album)
             }
         }
     }
@@ -54,7 +62,8 @@ class AlbumViewAdapter(private val context: Context, private val albums: Mutable
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         val album: Album = albumsFiltered[position]
-        holder.bind(album)
+
+        holder.bind(album, listener)
     }
 
     override fun getItemCount(): Int = albumsFiltered.size
