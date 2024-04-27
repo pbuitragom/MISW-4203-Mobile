@@ -32,12 +32,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
+
 }
 
 dependencies {
@@ -70,7 +74,18 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test:core:1.4.0")
     androidTestImplementation("org.mockito:mockito-android:3.11.2")
+    androidTestImplementation("org.mockito:mockito-inline:3.11.2")
     androidTestImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("androidx.test.ext:junit:1.1.3")
+    testImplementation("androidx.test:core:1.4.0")
+    testImplementation("org.mockito:mockito-android:3.11.2")
+    testImplementation("org.mockito:mockito-inline:3.11.2")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+
+    implementation(libs.picasso)
 
 }
