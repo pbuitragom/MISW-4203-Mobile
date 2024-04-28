@@ -6,6 +6,7 @@
     app:cardCornerRadius="4dp">
 
     <LinearLayout
+        android:id="@+id/album_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -14,7 +15,7 @@
         <ImageView
             android:id="@+id/album_cover_image"
             android:layout_width="56dp"
-            android:layout_height="56dp"/>
+            android:layout_height="65dp" />
 
         <LinearLayout
             android:layout_width="0dp"

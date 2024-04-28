@@ -91,4 +91,5 @@ dependencies {
     androidTestImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation(libs.androidx.espresso.core) // Agregar Espresso
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
 }

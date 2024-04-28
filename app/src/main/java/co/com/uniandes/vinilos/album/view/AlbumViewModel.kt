@@ -1,6 +1,5 @@
-package co.com.uniandes.vinilos.album.viewModels
+package co.com.uniandes.vinilos.album.view
 
-import AlbumServiceAdapter
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -11,8 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.repository.AlbumRepository
 import co.com.uniandes.vinilos.album.repository.AlbumRepositoryImpl
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 

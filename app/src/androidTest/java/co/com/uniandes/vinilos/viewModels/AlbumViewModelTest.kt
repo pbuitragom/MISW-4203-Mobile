@@ -8,7 +8,7 @@ import androidx.test.core.app.ApplicationProvider
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.repository.AlbumRepository
 import co.com.uniandes.vinilos.album.repository.MockAlbumRepositoryImpl
-import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel
+import co.com.uniandes.vinilos.album.view.AlbumViewModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,7 +32,8 @@ class AlbumViewModelTest {
     @Before
     fun setUp() {
         val application = ApplicationProvider.getApplicationContext<Application>()
-        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(AlbumViewModel::class.java)
+        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(
+            AlbumViewModel::class.java)
     }
 
     @Test

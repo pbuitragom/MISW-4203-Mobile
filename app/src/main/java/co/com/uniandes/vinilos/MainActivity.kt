@@ -3,8 +3,6 @@ package co.com.uniandes.vinilos
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.view.AlbumActivity
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
-import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel
+import co.com.uniandes.vinilos.album.view.AlbumViewModel
 
 class MainActivity : AppCompatActivity(), AlbumListener {
     private lateinit var viewModel: AlbumViewModel
@@ -70,10 +68,6 @@ class MainActivity : AppCompatActivity(), AlbumListener {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.layout_menu, menu)
-        return true
-    }
 
     override fun openDetailAlbum(album: Album) {
         val intent = Intent(this, AlbumActivity::class.java)

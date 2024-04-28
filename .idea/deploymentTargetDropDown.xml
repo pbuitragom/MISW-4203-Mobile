@@ -2,22 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="AlbumActivityTest">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_3a_API_33_arm64-v8a.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-28T18:05:47.114048Z" />
-        </State>
-      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -34,16 +18,19 @@
           <timeTargetWasSelectedWithDropDown value="2024-04-28T17:09:07.833722Z" />
         </State>
       </entry>
-      <entry key="test_action_albumSearch()">
+      <entry key="test_visibility_albumDetail()">
         <State />
       </entry>
-      <entry key="test_isAlbumActivityInView()">
+      <entry key="test_visibility_albumDetailDescriptionLabel()">
         <State />
       </entry>
-      <entry key="test_visibility_albumSearch()">
+      <entry key="test_visibility_albumDetailGenderLabel()">
         <State />
       </entry>
-      <entry key="test_visibility_albumTitle()">
+      <entry key="test_visibility_albumDetailImageSRC()">
+        <State />
+      </entry>
+      <entry key="test_visibility_albumDetailTitle()">
         <State />
       </entry>
     </value>

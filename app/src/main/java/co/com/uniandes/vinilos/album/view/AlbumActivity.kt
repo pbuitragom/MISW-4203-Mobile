@@ -3,18 +3,15 @@ package co.com.uniandes.vinilos.album.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.com.uniandes.vinilos.AlbumDetailActivity
 import co.com.uniandes.vinilos.AlbumListener
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
-import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel
 
 
 class AlbumActivity : AppCompatActivity(), AlbumListener {
@@ -66,10 +63,6 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
                 return true
             }
         })
-    }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.layout_menu, menu)
-        return true
     }
 
     override fun openDetailAlbum(album: Album) {

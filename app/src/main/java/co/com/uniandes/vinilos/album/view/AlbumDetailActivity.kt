@@ -1,15 +1,11 @@
-package co.com.uniandes.vinilos
+package co.com.uniandes.vinilos.album.view
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.databinding.ActivityAlbumDetailBinding
-import co.com.uniandes.vinilos.databinding.ActivityAlbumsBinding
 import com.squareup.picasso.Picasso
 
 class AlbumDetailActivity : AppCompatActivity() {
