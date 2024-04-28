@@ -1,5 +1,6 @@
 package co.com.uniandes.vinilos.album.view
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -36,5 +37,12 @@ class AlbumActivityTest {
 
     @Test
     fun test_action_albumSearch() {
+        // Buscar el album con el nombre buscando
+        onView(withId(androidx.constraintlayout.widget.R.id.search_button)).perform(click())
+        onView(withId(androidx.constraintlayout.widget.R.id.search_src_text)).perform(typeText("buscando"))
+
+        // Verificar que se muestra el album buscando
+        onView(withId(R.id.album_recycler_view)).check(matches(isDisplayed()))
+        onView(withId(R.id.album_title_text)).check(matches(withText("Buscando América")))
     }
 }

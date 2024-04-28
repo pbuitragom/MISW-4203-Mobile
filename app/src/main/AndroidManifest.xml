@@ -19,9 +19,6 @@
             android:name=".AlbumDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".RetrofitActivity"
-            android:exported="true"></activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true"></activity>
         <activity
