@@ -90,7 +90,7 @@ dependencies {
     testImplementation("junit:junit:4.13.1")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
     testImplementation("org.mockito:mockito-core:3.12.4")
-
+    testImplementation("org.robolectric:robolectric:4.6.1")
 
 
     /* androidTestImplementation(libs.androidx.junit)
