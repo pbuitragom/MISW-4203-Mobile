@@ -2,6 +2,15 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="AlbumDetailActivityTest">
+        <State />
+      </entry>
+      <entry key="Tests in 'co.com.uniandes.vinilos'">
+        <State />
+      </entry>
+      <entry key="Tests in 'co.com.uniandes.vinilos.album.view'">
+        <State />
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -18,19 +27,10 @@
           <timeTargetWasSelectedWithDropDown value="2024-04-28T17:09:07.833722Z" />
         </State>
       </entry>
-      <entry key="test_visibility_albumDetail()">
-        <State />
-      </entry>
       <entry key="test_visibility_albumDetailDescriptionLabel()">
         <State />
       </entry>
       <entry key="test_visibility_albumDetailGenderLabel()">
-        <State />
-      </entry>
-      <entry key="test_visibility_albumDetailImageSRC()">
-        <State />
-      </entry>
-      <entry key="test_visibility_albumDetailTitle()">
         <State />
       </entry>
     </value>

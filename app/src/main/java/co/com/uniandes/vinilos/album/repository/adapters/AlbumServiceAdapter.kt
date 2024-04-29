@@ -12,7 +12,7 @@ class AlbumServiceAdapter constructor(context: Context) {
 
     companion object{
 
-        const val BASE_URL= "http://10.0.2.2:3000/"
+        const val BASE_URL= "http://34.168.32.214/"
         const val RESOURCE= "albums"
 
         fun getAlbums(responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
