@@ -1,5 +1,6 @@
-package co.com.uniandes.vinilos.album.model
+package co.com.uniandes.vinilos
 
+import co.com.uniandes.vinilos.album.model.Album
 import com.google.gson.Gson
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -7,7 +8,7 @@ import org.junit.Test
 class AlbumTest {
 
     @Test
-    fun albumInitialization_isCorrect() {
+    fun `Creación correcta del Album`() {
         val album = Album(
             albumId = 1,
             name = "Example Album",
@@ -28,7 +29,7 @@ class AlbumTest {
     }
 
     @Test
-    fun albumSerialization_isCorrect() {
+    fun `Serialización correcta del Album`() {
         val album = Album(
             albumId = 1,
             name = "Example Album",
@@ -45,4 +46,6 @@ class AlbumTest {
 
         assertEquals(album, deserializedAlbum)
     }
+
+
 }

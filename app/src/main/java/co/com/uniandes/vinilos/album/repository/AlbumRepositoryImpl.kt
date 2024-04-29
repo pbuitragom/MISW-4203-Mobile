@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken
 
 class AlbumRepositoryImpl(private val context: Context) : AlbumRepository {
 
-    private val serviceAdapter = AlbumServiceAdapter(context)
+    val serviceAdapter = AlbumServiceAdapter(context)
     val albumsLiveData = MutableLiveData<List<Album>>()
 
     override fun getAlbum(): LiveData<Album> {
