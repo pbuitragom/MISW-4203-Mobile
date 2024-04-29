@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.com.uniandes.vinilos.AlbumDetailActivity
 import co.com.uniandes.vinilos.AlbumListener
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.album.model.Album
@@ -64,6 +65,7 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
             }
         })
     }
+
 
     override fun openDetailAlbum(album: Album) {
         val intent = Intent(this, AlbumDetailActivity::class.java)

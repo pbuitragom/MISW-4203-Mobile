@@ -17,6 +17,8 @@ converter-gson = "2.3.0"
 converter-scalars = "2.9.0"
 room = "2.4.2"
 glide="4.12.0"
+coreKtxVersion = "1.5.0"
+junitKtx = "1.1.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,7 +37,9 @@ retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", v
 retrofit2-converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converter-scalars" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }  # Opcional, para soporte de Coroutines
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }  # Opcional, para soporte de Coroutines
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
