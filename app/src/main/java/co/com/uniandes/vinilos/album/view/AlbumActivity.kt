@@ -3,21 +3,18 @@ package co.com.uniandes.vinilos.album.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.com.uniandes.vinilos.AlbumListener
 import co.com.uniandes.vinilos.R
-import co.com.uniandes.vinilos.RetrofitActivity
+import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
-import co.com.uniandes.vinilos.album.viewModels.AlbumViewModel
 
 
-class AlbumActivity : AppCompatActivity() {
+class AlbumActivity : AppCompatActivity(), AlbumListener {
 
     private lateinit var viewModel: AlbumViewModel
     private lateinit var viewAdapter: AlbumViewAdapter
@@ -33,29 +30,27 @@ class AlbumActivity : AppCompatActivity() {
         val searchView = findViewById<SearchView>(R.id.search_view)
 
         val recyclerView = findViewById<RecyclerView>(R.id.album_recycler_view)
-        viewAdapter = AlbumViewAdapter(this, mutableListOf())
+        viewAdapter = AlbumViewAdapter(this, mutableListOf(), this)
         recyclerView.adapter = viewAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Observar los cambios en los datos del ViewModel
-        viewModel.albums.observe(this, Observer { albumList ->
+        viewModel.albums.observe(this) { albumList ->
             viewAdapter.updateData(albumList.toMutableList())
             recyclerView.adapter = viewAdapter
             val currentQuery = searchView.query.toString()
-            Log.e("MainActivity", "Texto para buscar ${currentQuery}")
+            Log.e("MainActivity", "Texto para buscar $currentQuery")
             viewAdapter.filter(currentQuery)
-        })
+        }
 
 
-        viewModel.eventNetworkError.observe(this, Observer { isNetworkError ->
+        viewModel.eventNetworkError.observe(this) { isNetworkError ->
             if (isNetworkError) {
                 if (!viewModel.isNetworkErrorShown.value!!) {
-                    //showErrorDialog()
-                    //getResultTextView.text = "That didn't work!"
                     viewModel.onNetworkErrorShown()
                 }
             }
-        })
+        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -70,24 +65,10 @@ class AlbumActivity : AppCompatActivity() {
         })
     }
 
-    private fun showErrorDialog() {
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.layout_menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_switch_layout -> {
-                // Create an intent with a destination of the other Activity
-                val intent = Intent(this, RetrofitActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
+    override fun openDetailAlbum(album: Album) {
+        val intent = Intent(this, AlbumDetailActivity::class.java)
+        intent.putExtra("album", album)
+        startActivity(intent)
     }
 
 }
