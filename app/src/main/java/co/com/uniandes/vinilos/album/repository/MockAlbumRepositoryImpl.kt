@@ -16,9 +16,8 @@ class MockAlbumRepositoryImpl(private val context: Context) : AlbumRepository {
     private val serviceAdapter = AlbumServiceAdapter(context)
     val albumsLiveData = MutableLiveData<List<Album>>()
 
-    override fun getAlbum(): LiveData<Album> {
+    override fun getAlbum(albumId: Int): LiveData<Album?> {
         val liveData = MutableLiveData<Album>()
-        //Por implementar
         return liveData
     }
 

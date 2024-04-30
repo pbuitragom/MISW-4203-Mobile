@@ -21,8 +21,9 @@ class AlbumServiceAdapter constructor(context: Context) {
         fun createAlbum(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
             return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
         }
-        fun getAlbum(responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
-            return StringRequest(Request.Method.GET, BASE_URL+RESOURCE, responseListener,errorListener)
+        fun getAlbum(albumId: Int, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
+            return StringRequest(Request.Method.GET,
+                "$BASE_URL$RESOURCE/$albumId", responseListener,errorListener)
         }
 
     }

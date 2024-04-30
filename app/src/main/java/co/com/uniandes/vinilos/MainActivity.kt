@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.view.AlbumActivity
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
-import co.com.uniandes.vinilos.album.view.AlbumViewModel
+import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 
 class MainActivity : AppCompatActivity(), AlbumListener {
     private lateinit var viewModel: AlbumViewModel

@@ -16,9 +16,26 @@ class AlbumRepositoryImpl(private val context: Context) : AlbumRepository {
     private val serviceAdapter = AlbumServiceAdapter(context)
     val albumsLiveData = MutableLiveData<List<Album>>()
 
-    override fun getAlbum(): LiveData<Album> {
-        val liveData = MutableLiveData<Album>()
-        //Por implementar
+    override fun getAlbum(albumId: Int): LiveData<Album?> {
+        val liveData = MutableLiveData<Album?>()
+        val request = AlbumServiceAdapter.getAlbum(
+            albumId,
+            { response ->
+                val gson = Gson()
+                try {
+                    val album: Album = gson.fromJson(response, Album::class.java)
+                    liveData.postValue(album)
+                    Log.e("AlbumRepositoryImpl", "Album fetched: $album")
+                } catch (e: Exception) {
+                    Log.e("AlbumRepositoryImpl", "Error parsing album", e)
+                }
+            },
+            { error ->
+                Log.e("AlbumRepositoryImpl", "Error fetching album: ${error.toString()}")
+                liveData.postValue(null)
+            }
+        )
+        serviceAdapter.instance.add(request)
         return liveData
     }
 
