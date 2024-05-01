@@ -1,6 +1,7 @@
 package co.com.uniandes.vinilos.album.view.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -43,6 +44,7 @@ class AlbumViewAdapter(
                     .into(it)
             }
             itemView.setOnClickListener {
+                Log.e("AlbumViewAdapter", "El album en el adaptador es  ${album} y tiene id ${album.albumId}")
                 listener.openDetailAlbum(album)
             }
         }

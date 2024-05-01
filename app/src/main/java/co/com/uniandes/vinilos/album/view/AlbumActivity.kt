@@ -130,8 +130,9 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
     }
 
     override fun openDetailAlbum(album: Album) {
+        Log.e("AlbumActivity", "El Album seleccionado es ${album} y tiene id ${album.albumId}")
         Intent(this, AlbumDetailActivity::class.java).also {
-            it.putExtra("album", album)
+            it.putExtra("albumId", album.albumId)
             startActivity(it)
         }
     }
