@@ -35,7 +35,7 @@ class AlbumViewAdapter(
         fun bind(album: Album, listener: AlbumListener) {
             titleTextView?.text = album.name
             detailsTextView?.text =
-                album.genre  // Ajusta esto según cómo quieras mostrar los detalles
+                album.genre
             imageView?.let {
                 Glide.with(itemView.context)
                     .load(album.cover)
