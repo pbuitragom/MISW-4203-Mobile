@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.repository.AlbumRepository
 import co.com.uniandes.vinilos.album.repository.AlbumRepositoryImpl
+import com.bumptech.glide.load.engine.Resource
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
