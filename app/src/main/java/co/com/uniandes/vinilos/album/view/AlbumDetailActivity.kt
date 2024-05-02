@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
@@ -12,6 +12,7 @@ import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 import co.com.uniandes.vinilos.databinding.ActivityAlbumDetailBinding
 import com.bumptech.glide.Glide
+
 
 class AlbumDetailActivity : VinilosActivityBase() {
 
