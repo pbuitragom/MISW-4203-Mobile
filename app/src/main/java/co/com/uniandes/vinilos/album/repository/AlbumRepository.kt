@@ -5,6 +5,6 @@ import co.com.uniandes.vinilos.album.model.Album
 
 interface AlbumRepository{
 
-    fun getAlbum(): LiveData<Album>
+    fun getAlbum(albumId: Int): LiveData<Album?>
     fun getAlbums():  LiveData<List<Album>>
 }

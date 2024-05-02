@@ -27,12 +27,12 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/titleLabel"
+            android:id="@+id/album_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/backImage"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Album 0"
+            tools:text="---"
             android:layout_marginStart="10dp"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -64,7 +64,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageAlbum"
+                android:id="@+id/album_cover_image"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,22 +73,11 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/titleAlbum"
+                android:id="@+id/album_released_date_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:textSize="20sp"
-                tools:text="Album 0"
-                app:layout_constraintTop_toBottomOf="@+id/imageAlbum"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/releaseDateLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleAlbum"
+                app:layout_constraintTop_toBottomOf="@+id/album_cover_image"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/gray"
                 android:textSize="16sp"
@@ -96,11 +85,11 @@
                 tools:text="Fecha de lanzamiento"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/genderLabel"
+                android:id="@+id/album_genre_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/releaseDateLabel"
+                app:layout_constraintTop_toBottomOf="@+id/album_released_date_text"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/gray"
                 android:textSize="16sp"
@@ -108,11 +97,23 @@
                 tools:text="Genero XXXXX"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/descriptionLabel"
+                android:id="@+id/album_record_label_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genderLabel"
+                app:layout_constraintTop_toBottomOf="@+id/album_genre_text"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/gray"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"
+                tools:text="Record Label"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/album_description_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/album_record_label_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="20dp"
@@ -142,7 +143,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionLabel"
+                app:layout_constraintTop_toBottomOf="@+id/album_description_text"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
