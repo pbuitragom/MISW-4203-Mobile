@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,67 +14,6 @@ import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
 import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 
-
-/*class AlbumActivity : AppCompatActivity(), AlbumListener {
-
-    private lateinit var viewModel: AlbumViewModel
-    private lateinit var viewAdapter: AlbumViewAdapter
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_albums)
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(application))[AlbumViewModel::class.java]
-
-        val searchView = findViewById<SearchView>(R.id.search_view)
-
-        val recyclerView = findViewById<RecyclerView>(R.id.album_recycler_view)
-        viewAdapter = AlbumViewAdapter(this, mutableListOf(), this)
-        recyclerView.adapter = viewAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Observar los cambios en los datos del ViewModel
-        viewModel.albums.observe(this) { albumList ->
-            viewAdapter.updateData(albumList.toMutableList())
-            recyclerView.adapter = viewAdapter
-            val currentQuery = searchView.query.toString()
-            Log.e("MainActivity", "Texto para buscar $currentQuery")
-            viewAdapter.filter(currentQuery)
-        }
-
-
-        viewModel.eventNetworkError.observe(this) { isNetworkError ->
-            if (isNetworkError) {
-                if (!viewModel.isNetworkErrorShown.value!!) {
-                    viewModel.onNetworkErrorShown()
-                }
-            }
-        }
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                viewAdapter.filter(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                viewAdapter.filter(newText)
-                return true
-            }
-        })
-    }
-
-    override fun openDetailAlbum(albumId: Int) {
-        val intent = Intent(this, AlbumDetailActivity::class.java)
-        intent.putExtra("albumId", albumId)
-        startActivity(intent)
-    }
-
-<<<<<<< HEAD
-}
-=======
-}*/
 
 class AlbumActivity : AppCompatActivity(), AlbumListener {
 
@@ -132,10 +70,10 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
         }
     }
 
-    override fun openDetailAlbum(album: Album) {
-        Log.e("AlbumActivity", "El Album seleccionado es ${album} y tiene id ${album.albumId}")
+    override fun openDetailAlbum(albumId: Int) {
+        Log.e("AlbumActivity", "El Album seleccionado tiene id ${albumId}")
         Intent(this, AlbumDetailActivity::class.java).also {
-            it.putExtra("albumId", album.albumId)
+            it.putExtra("albumId", albumId)
             startActivity(it)
         }
     }
@@ -144,4 +82,3 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
         // Implementation to show error, e.g., a Toast or a Snackbar
     }
 }
->>>>>>> e1f78c280f8c48b7e2c5f233159e672acd77d9f9
