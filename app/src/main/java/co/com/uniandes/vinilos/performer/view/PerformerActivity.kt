@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.com.uniandes.vinilos.PerformerListener
 import co.com.uniandes.vinilos.R
+import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.performer.model.Performer
 import co.com.uniandes.vinilos.performer.view.adapter.PerformerViewAdapter
 import co.com.uniandes.vinilos.performer.viewModel.PerformerViewModel
 
 
-class PerformerActivity : AppCompatActivity(), PerformerListener {
+class PerformerActivity : VinilosActivityBase(),  PerformerListener {
 
     private lateinit var viewModel: PerformerViewModel
     private lateinit var viewAdapter: PerformerViewAdapter
@@ -64,7 +65,7 @@ class PerformerActivity : AppCompatActivity(), PerformerListener {
 
         viewModel.eventNetworkError.observe(this) { isNetworkError ->
             if (isNetworkError && !viewModel.isNetworkErrorShown.value!!) {
-                showError("Network error occurred")
+                //showError("Network error occurred")
                 viewModel.onNetworkErrorShown()
             }
         }
@@ -76,9 +77,5 @@ class PerformerActivity : AppCompatActivity(), PerformerListener {
             it.putExtra("id", id)
             startActivity(it)
         }
-    }
-
-    private fun showError(message: String) {
-        // Implementation to show error, e.g., a Toast or a Snackbar
     }
 }

@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.R
+import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.databinding.ActivityAlbumDetailBinding
 import co.com.uniandes.vinilos.databinding.ActivityPerformerDetailBinding
 import co.com.uniandes.vinilos.databinding.ActivityPerformersBinding
@@ -14,7 +15,7 @@ import co.com.uniandes.vinilos.performer.model.Performer
 import co.com.uniandes.vinilos.performer.viewModel.PerformerViewModel
 import com.bumptech.glide.Glide
 
-class PerformerDetailActivity : AppCompatActivity() {
+class PerformerDetailActivity : VinilosActivityBase() {
 
     private var performer: Performer? = null
     private lateinit var viewModel: PerformerViewModel

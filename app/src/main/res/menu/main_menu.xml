@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_albums"
+        android:title="Álbumes" />
+    <item
+        android:id="@+id/nav_performers"
+        android:title="Artistas" />
+</menu>
+
+<!--
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/nav_albums"
+    android:icon="@drawable/ic_album"
+    android:title="Álbumes" />
+<item
+    android:id="@+id/nav_performers"
+    android:icon="@drawable/ic_performer"
+    android:title="Artistas" />
+</menu> -->

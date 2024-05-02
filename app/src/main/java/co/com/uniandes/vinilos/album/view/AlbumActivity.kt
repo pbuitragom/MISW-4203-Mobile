@@ -3,26 +3,28 @@ package co.com.uniandes.vinilos.album.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.com.uniandes.vinilos.AlbumListener
 import co.com.uniandes.vinilos.R
-import co.com.uniandes.vinilos.album.model.Album
+import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
 import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 
 
-class AlbumActivity : AppCompatActivity(), AlbumListener {
+class AlbumActivity: VinilosActivityBase(), AlbumListener {
 
     private lateinit var viewModel: AlbumViewModel
     private lateinit var viewAdapter: AlbumViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_albums)
+
         initializeViewModel()
         setupRecyclerView()
         setupSearchView()
@@ -64,7 +66,7 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
 
         viewModel.eventNetworkError.observe(this) { isNetworkError ->
             if (isNetworkError && !viewModel.isNetworkErrorShown.value!!) {
-                showError("Network error occurred")
+                this.showError("Network error occurred")
                 viewModel.onNetworkErrorShown()
             }
         }
@@ -76,9 +78,5 @@ class AlbumActivity : AppCompatActivity(), AlbumListener {
             it.putExtra("albumId", albumId)
             startActivity(it)
         }
-    }
-
-    private fun showError(message: String) {
-        // Implementation to show error, e.g., a Toast or a Snackbar
     }
 }
