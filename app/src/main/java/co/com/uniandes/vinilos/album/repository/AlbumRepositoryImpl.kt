@@ -5,8 +5,6 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
 import co.com.uniandes.vinilos.album.model.Album
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

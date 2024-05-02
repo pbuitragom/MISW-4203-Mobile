@@ -17,7 +17,7 @@ import java.util.Locale
 class AlbumViewAdapter(
     private val context: Context, private val albums: MutableList<Album>, private val listener: AlbumListener
 ) :
-    RecyclerView.Adapter<AlbumViewAdapter.AlbumViewHolder>() {
+    RecyclerView.Adapter<AlbumViewAdapter.AlbumViewHolder>(){
 
     private var albumsFiltered: MutableList<Album> = albums
 
@@ -45,7 +45,7 @@ class AlbumViewAdapter(
             }
             itemView.setOnClickListener {
                 Log.e("AlbumViewAdapter", "El album en el adaptador es  ${album} y tiene id ${album.albumId}")
-                listener.openDetailAlbum(album)
+                listener.openDetailAlbum(album.albumId)
             }
         }
     }

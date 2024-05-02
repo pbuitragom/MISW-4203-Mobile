@@ -72,7 +72,7 @@ class AlbumActivityTest {
         onView(withId(R.id.album_cover_image)).check(matches(isDisplayed()))
         onView(withId(R.id.album_cover_image)).perform(click())
 
-        onView(withId(R.id.titleAlbum)).check(matches(isDisplayed()))
-        onView(withId(R.id.titleAlbum)).check(matches(withText("Buscando América")))
+        onView(withId(R.id.album_title_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.album_title_text)).check(matches(withText("Buscando América")))
     }
 }
