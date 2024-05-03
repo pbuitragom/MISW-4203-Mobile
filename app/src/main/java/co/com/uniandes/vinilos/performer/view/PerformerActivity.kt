@@ -1,30 +1,29 @@
-package co.com.uniandes.vinilos.album.view
+package co.com.uniandes.vinilos.performer.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.com.uniandes.vinilos.AlbumListener
+import co.com.uniandes.vinilos.PerformerListener
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
-import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
-import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
+import co.com.uniandes.vinilos.performer.model.Performer
+import co.com.uniandes.vinilos.performer.view.adapter.PerformerViewAdapter
+import co.com.uniandes.vinilos.performer.viewModel.PerformerViewModel
 
 
-class AlbumActivity: VinilosActivityBase(), AlbumListener {
+class PerformerActivity : VinilosActivityBase(),  PerformerListener {
 
-    private lateinit var viewModel: AlbumViewModel
-    private lateinit var viewAdapter: AlbumViewAdapter
+    private lateinit var viewModel: PerformerViewModel
+    private lateinit var viewAdapter: PerformerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_albums)
-
+        setContentView(R.layout.activity_performers)
         initializeViewModel()
         setupRecyclerView()
         setupSearchView()
@@ -32,15 +31,15 @@ class AlbumActivity: VinilosActivityBase(), AlbumListener {
     }
 
     private fun initializeViewModel() {
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(application))[AlbumViewModel::class.java]
+        viewModel = ViewModelProvider(this, PerformerViewModel.Factory(application))[PerformerViewModel::class.java]
     }
 
     private fun setupRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.album_recycler_view)
-        viewAdapter = AlbumViewAdapter(this, mutableListOf(), this)
+        val recyclerView = findViewById<RecyclerView>(R.id.performer_recycler_view)
+        viewAdapter = PerformerViewAdapter(this, mutableListOf(), this)
         recyclerView.apply {
             adapter = viewAdapter
-            layoutManager = LinearLayoutManager(this@AlbumActivity)
+            layoutManager = LinearLayoutManager(this@PerformerActivity)
         }
     }
 
@@ -66,16 +65,16 @@ class AlbumActivity: VinilosActivityBase(), AlbumListener {
 
         viewModel.eventNetworkError.observe(this) { isNetworkError ->
             if (isNetworkError && !viewModel.isNetworkErrorShown.value!!) {
-                this.showError("Network error occurred")
+                //showError("Network error occurred")
                 viewModel.onNetworkErrorShown()
             }
         }
     }
 
-    override fun openDetailAlbum(albumId: Int) {
-        Log.e("AlbumActivity", "El Album seleccionado tiene id ${albumId}")
-        Intent(this, AlbumDetailActivity::class.java).also {
-            it.putExtra("albumId", albumId)
+    override fun openDetailPerformer(id: Int) {
+        Log.e("PerformerActivity", "El Performer seleccionado es ${id} ")
+        Intent(this, PerformerDetailActivity::class.java).also {
+            it.putExtra("id", id)
             startActivity(it)
         }
     }

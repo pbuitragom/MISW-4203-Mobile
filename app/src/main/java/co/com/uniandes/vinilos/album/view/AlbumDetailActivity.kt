@@ -1,21 +1,20 @@
 package co.com.uniandes.vinilos.album.view
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.R
+import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 import co.com.uniandes.vinilos.databinding.ActivityAlbumDetailBinding
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 
-class AlbumDetailActivity : AppCompatActivity() {
+
+class AlbumDetailActivity : VinilosActivityBase() {
 
     private var album: Album? = null
     private lateinit var viewModel: AlbumViewModel
@@ -35,14 +34,10 @@ class AlbumDetailActivity : AppCompatActivity() {
         }
 
         val albumId: Int = intent.getIntExtra("albumId", -1 )
-        Log.e("AlbumDetailActivityPM", "El albumId es ${albumId}")
+        Log.e("AlbumDetailActivity", "El albumId es ${albumId}")
         if (albumId == -1) finish() // Terminate if no valid ID provided
 
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(application))[AlbumViewModel::class.java]
-
-        val albumTitle = findViewById<TextView>(R.id.album_title_text)
-        val albumDescription = findViewById<TextView>(R.id.album_description_text)
-        val albumCover = findViewById<ImageView>(R.id.album_cover_image)
 
         viewModel.loadAlbum(albumId)
 
@@ -69,35 +64,4 @@ class AlbumDetailActivity : AppCompatActivity() {
         albumRecordLabel.text = album.recordLabel
         Glide.with(this).load(album.cover).into(albumCover)
     }
-
-    /*private fun setAlbum() {
-        val intentAlbum = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getSerializableExtra("album", Album::class.java)
-        } else {
-            intent.getSerializableExtra("album")
-        }
-        album = intentAlbum as? Album
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun setDescription() {
-        binding.apply {
-            titleLabel.text = album?.name ?: "Album"
-            Picasso.get().load(album?.cover ?: "https://www.labfriend.co.in/static/assets/images/shared/default-image.png").into(imageAlbum)
-            titleAlbum.text = album?.name ?: "Album"
-            releaseDateLabel.text = album?.releaseDate
-            genderLabel.text = "Genero: ${album?.genre ?: "Desconocido"}"
-            descriptionLabel.text = album?.description ?: "Descripción"
-            commentButton.setOnClickListener {
-                //TO-DO: Implementar acción del boton comentar
-            }
-            backImage.setOnClickListener {
-                finish()
-            }
-            closeImage.setOnClickListener {
-                finish()
-            }
-        }
-    }*/
-
 }
