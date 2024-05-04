@@ -74,8 +74,8 @@ La aplicación sigue el patrón MVVM y se documenta utilizando diagramas de clas
 
 Detalles sobre lo que cada sprint debe entregar, incluyendo código, APK, documentación y retrospectivas.
 
-- [**Sprint 1**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki#proyecto-vinilos---sprint-1))
-- Sprint 2
+- [**Sprint 1**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki#proyecto-vinilos---sprint-1)
+- [**Sprint 1**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki#proyecto-vinilos---sprint-2)
 - Sprint 3
 
 ## Instalación y Configuración
