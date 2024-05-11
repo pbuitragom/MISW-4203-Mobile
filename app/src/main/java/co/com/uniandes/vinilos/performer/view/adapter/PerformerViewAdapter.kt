@@ -28,9 +28,9 @@ class PerformerViewAdapter(
         private var detailsTextView: TextView? = null
 
         init {
-            imageView = itemView.findViewById(R.id.album_cover_image)
-            titleTextView = itemView.findViewById(R.id.album_title_text)
-            detailsTextView = itemView.findViewById(R.id.album_details_text)
+            imageView = itemView.findViewById(R.id.perfomer_cover_image)
+            titleTextView = itemView.findViewById(R.id.perfomer_title_text)
+            detailsTextView = itemView.findViewById(R.id.perfomer_details_text)
         }
 
         fun bind(performer: Performer, listener: PerformerListener) {
@@ -40,7 +40,7 @@ class PerformerViewAdapter(
             imageView?.let {
                 Glide.with(itemView.context)
                     .load(performer.image)
-                    //.placeholder(R.drawable.ic_album_placeholder) // Reemplazar con una imagen de placeholder
+                    //.placeholder(R.drawable.ic_perfomer_placeholder) // Reemplazar con una imagen de placeholder
                     .into(it)
             }
             itemView.setOnClickListener {

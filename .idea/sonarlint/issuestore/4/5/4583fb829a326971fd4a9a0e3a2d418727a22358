@@ -1,0 +1,33 @@
+
+`	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(¡şøÿÿÿÿ
+`	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(¡şøÿÿÿÿ
+t
+java:S2293S"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ë˜›Ûûÿÿÿÿ
+o
+java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(òª Û
+o
+java:S2293b"YReplace the type specification in this constructor call with the diamond operator ("<>").(š¨÷ú
+t
+java:S1488M"^Immediately return this expression instead of assigning it to the temporary variable "tmpVal".(·‘Ç
+O
+java:S35162"9Refactor this method to not always return the same value.(ƒÃ¬†
+l
+java:S1128
+"QRemove this unnecessary import: java.lang classes are always implicitly imported.(”ñ¯íùÿÿÿÿ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(šÆ¿ˆıÿÿÿÿ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(Ãş”«ıÿÿÿÿ
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(úĞÔ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ
+<	java:S131%""Add a default case to this switch.(”€üÿÿÿÿ
+f
+java:S1301%"KReplace this "switch" statement by "if" statements to increase readability.(”€üÿÿÿÿ
+C	java:S108<")Either remove or fill this block of code.(”€üÿÿÿÿ
+<	java:S131<""Add a default case to this switch.(”€üÿÿÿÿ
+f
+java:S1301<"KReplace this "switch" statement by "if" statements to increase readability.(”€üÿÿÿÿ
