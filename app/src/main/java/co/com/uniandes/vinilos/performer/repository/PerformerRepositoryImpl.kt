@@ -3,57 +3,45 @@ package co.com.uniandes.vinilos.performer.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import co.com.uniandes.vinilos.performer.model.Performer
 import co.com.uniandes.vinilos.performer.repository.adapters.PerformerServiceAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
 
 class PerformerRepositoryImpl(private val context: Context) : PerformerRepository {
 
-    private val serviceAdapter = PerformerServiceAdapter(context)
-    val performersLiveData = MutableLiveData<List<Performer>>()
-
-    override fun getPerformer(id: Int): LiveData<Performer?> {
-        val liveData = MutableLiveData<Performer?>()
-        val request = PerformerServiceAdapter.getPerformer(
-            id,
-            { response ->
-                val gson = Gson()
-                try {
-                    val performer: Performer = gson.fromJson(response, Performer::class.java)
-                    liveData.postValue(performer)
-                    Log.e("PerformerRepositoryImpl", "Album fetched: ${performer}")
-                } catch (e: Exception) {
-                    Log.e("PerformerRepositoryImpl", "Error parsing album", e)
-                }
-            },
-            { error ->
-                Log.e("PerformerRepositoryImpl", "Error fetching performer: ${error.toString()}")
-                liveData.postValue(null)
+    override fun getPerformer(id: Int): LiveData<Performer?> = liveData(Dispatchers.IO) {
+        val response = PerformerServiceAdapter.getPerformer(id)
+        val performer = response?.let {
+            try {
+                Gson().fromJson(it, Performer::class.java)
+            } catch (e: Exception) {
+                Log.e("PerformerRepositoryImpl", "Error parsing performer", e)
+                null
             }
-        )
-        serviceAdapter.instance.add(request)
-        return liveData
+        }
+        emit(performer)
     }
 
-    override fun getPerformers(): LiveData<List<Performer>> {
+    override fun getPerformers(): LiveData<List<Performer>> = liveData(Dispatchers.IO) {
+        val response = PerformerServiceAdapter.getPerformers()
+        val gson = Gson()
         val performerListType = object : TypeToken<List<Performer>>() {}.type
-        val request = PerformerServiceAdapter.getPerformers(
-            { response ->
-                val gson = Gson()
-                val performers: List<Performer> = gson.fromJson(response, performerListType)
-                performersLiveData.postValue(performers)
-                Log.e("PerformerRepositoryImpl", "gson lo dejó como $performers")
-            },
-            { error ->
-                Log.e("PerformerRepositoryImpl", "Error: ${error.toString()}")
-                performersLiveData.postValue(emptyList())
+        val performers: List<Performer> = response?.let {
+            try {
+                if (it.startsWith("[")) {
+                    gson.fromJson(it, performerListType)
+                } else {
+                    val singlePerformer: Performer = gson.fromJson(it, Performer::class.java)
+                    listOf(singlePerformer)
+                }
+            } catch (e: Exception) {
+                Log.e("PerformerRepositoryImpl", "Error parsing performers", e)
+                emptyList()
             }
-        )
-        serviceAdapter.instance.add(request)
-        return performersLiveData
+        } ?: emptyList()
+        emit(performers)
     }
-
-
 }
