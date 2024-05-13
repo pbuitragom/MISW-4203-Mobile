@@ -73,6 +73,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    // Ktor dependencies
+    implementation("io.ktor:ktor-client-core:2.0.0")
+    implementation("io.ktor:ktor-client-android:2.0.0")
+    implementation("io.ktor:ktor-client-logging:2.0.0")
+    implementation("io.ktor:ktor-client-json:2.0.0")
+    implementation("io.ktor:ktor-client-serialization:2.0.0")
+
 
     // Dependencias de prueba
     testImplementation(libs.junit)
@@ -92,4 +99,5 @@ dependencies {
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation(libs.androidx.espresso.core) // Agregar Espresso
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+
 }
