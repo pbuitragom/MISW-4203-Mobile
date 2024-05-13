@@ -6,14 +6,14 @@
     app:cardCornerRadius="4dp">
 
     <LinearLayout
-        android:id="@+id/album_item_layout"
+        android:id="@+id/perfomer_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/album_cover_image"
+            android:id="@+id/perfomer_cover_image"
             android:layout_width="56dp"
             android:layout_height="65dp" />
 
@@ -26,14 +26,14 @@
             android:paddingEnd="16dp">
 
             <TextView
-                android:id="@+id/album_title_text"
+                android:id="@+id/perfomer_title_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Album 1"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
             <TextView
-                android:id="@+id/album_details_text"
+                android:id="@+id/perfomer_details_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Performer, Performer, Performer"

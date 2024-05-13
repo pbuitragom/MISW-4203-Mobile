@@ -8,7 +8,7 @@ import androidx.test.core.app.ApplicationProvider
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.repository.AlbumRepository
 import co.com.uniandes.vinilos.album.repository.MockAlbumRepositoryImpl
-import co.com.uniandes.vinilos.album.view.AlbumViewModel
+import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

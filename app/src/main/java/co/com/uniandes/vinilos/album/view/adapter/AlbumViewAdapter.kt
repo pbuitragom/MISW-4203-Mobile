@@ -1,6 +1,7 @@
 package co.com.uniandes.vinilos.album.view.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -16,7 +17,7 @@ import java.util.Locale
 class AlbumViewAdapter(
     private val context: Context, private val albums: MutableList<Album>, private val listener: AlbumListener
 ) :
-    RecyclerView.Adapter<AlbumViewAdapter.AlbumViewHolder>() {
+    RecyclerView.Adapter<AlbumViewAdapter.AlbumViewHolder>(){
 
     private var albumsFiltered: MutableList<Album> = albums
 
@@ -35,7 +36,7 @@ class AlbumViewAdapter(
         fun bind(album: Album, listener: AlbumListener) {
             titleTextView?.text = album.name
             detailsTextView?.text =
-                album.genre  // Ajusta esto según cómo quieras mostrar los detalles
+                album.genre
             imageView?.let {
                 Glide.with(itemView.context)
                     .load(album.cover)
@@ -43,7 +44,8 @@ class AlbumViewAdapter(
                     .into(it)
             }
             itemView.setOnClickListener {
-                listener.openDetailAlbum(album)
+                Log.e("AlbumViewAdapter", "El album en el adaptador es  ${album} y tiene id ${album.albumId}")
+                listener.openDetailAlbum(album.albumId)
             }
         }
     }

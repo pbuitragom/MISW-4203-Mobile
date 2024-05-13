@@ -1,4 +1,4 @@
-package co.com.uniandes.vinilos.album.view
+package co.com.uniandes.vinilos.performer.viewModel
 
 import android.app.Application
 import android.util.Log
@@ -7,14 +7,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import co.com.uniandes.vinilos.album.model.Album
-import co.com.uniandes.vinilos.album.repository.AlbumRepository
-import co.com.uniandes.vinilos.album.repository.AlbumRepositoryImpl
+import co.com.uniandes.vinilos.performer.model.Performer
+import co.com.uniandes.vinilos.performer.repository.PerformerRepository
+import co.com.uniandes.vinilos.performer.repository.PerformerRepositoryImpl
 
-class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
+class PerformerViewModel(application: Application) :  AndroidViewModel(application) {
 
-    private val repository: AlbumRepository  = AlbumRepositoryImpl(application)
-    val albums: LiveData<List<Album>> = repository.getAlbums()
+    private val repository: PerformerRepository = PerformerRepositoryImpl(application)
+    val albums: LiveData<List<Performer>> = repository.getPerformers()
+
+    val _performer = MutableLiveData<Performer?>()
+    val performer: LiveData<Performer?>
+        get() = _performer
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -31,8 +35,14 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     }
 
     private fun refreshDataFromNetwork() {
-        Log.e("AlbumViewModel", "Acceso al Repository para llegar al AlbumServiceAdapter")
-        repository.getAlbums()
+        Log.e("PerformerViewModel", "Acceso al Repository para llegar al PerformerServiceAdapter")
+        repository.getPerformers()
+    }
+
+    fun loadPerformer(id: Int) {
+        repository.getPerformer(id).observeForever { item ->
+            _performer.postValue(item)
+        }
     }
 
     fun onNetworkErrorShown() {
@@ -41,11 +51,12 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(PerformerViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AlbumViewModel(app) as T
+                return PerformerViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }

@@ -2,23 +2,18 @@ package co.com.uniandes.vinilos.album.repository
 
 import AlbumServiceAdapter
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
 import co.com.uniandes.vinilos.album.model.Album
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import co.com.uniandes.vinilos.album.repository.AlbumRepository
 
 class MockAlbumRepositoryImpl(private val context: Context) : AlbumRepository {
 
     private val serviceAdapter = AlbumServiceAdapter(context)
     val albumsLiveData = MutableLiveData<List<Album>>()
 
-    override fun getAlbum(): LiveData<Album> {
+    override fun getAlbum(albumId: Int): LiveData<Album?> {
         val liveData = MutableLiveData<Album>()
-        //Por implementar
         return liveData
     }
 
