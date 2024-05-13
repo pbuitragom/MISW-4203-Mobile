@@ -20,6 +20,7 @@ class AlbumServiceAdapter(context: Context) {
         private const val BASE_URL = "http://34.168.191.6/"
         private const val RESOURCE = "albums"
 
+
         @OptIn(InternalAPI::class)
         suspend fun getAlbums(): String? {
             return withContext(Dispatchers.IO) {
