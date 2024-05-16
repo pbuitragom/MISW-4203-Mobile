@@ -1,16 +1,15 @@
-package co.com.uniandes.vinilos.album.view
+package co.com.uniandes.vinilos.collector.view
 
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
 import co.com.uniandes.vinilos.databinding.ActivityAlbumDetailBinding
 import com.bumptech.glide.Glide
 
-class AlbumDetailActivity : VinilosActivityBase() {
+class CollectorDetailActivity : VinilosActivityBase() {
 
     private var album: Album? = null
     private lateinit var viewModel: AlbumViewModel
@@ -58,7 +57,7 @@ class AlbumDetailActivity : VinilosActivityBase() {
             albumReleasedDateText.text = album.releaseDate
             albumGenreText.text = album.genre
             albumRecordLabelText.text = album.recordLabel
-            Glide.with(this@AlbumDetailActivity).load(album.cover).into(albumCoverImage)
+            Glide.with(this@CollectorDetailActivity).load(album.cover).into(albumCoverImage)
         }
     }
 }

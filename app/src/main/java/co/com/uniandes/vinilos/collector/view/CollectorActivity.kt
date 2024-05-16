@@ -1,4 +1,4 @@
-package co.com.uniandes.vinilos.album.view
+package co.com.uniandes.vinilos.collector.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,20 +7,19 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.com.uniandes.vinilos.AlbumListener
+import co.com.uniandes.vinilos.CollectorListener
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
-import co.com.uniandes.vinilos.album.view.adapter.AlbumViewAdapter
-import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
+import co.com.uniandes.vinilos.collector.viewModel.CollectorViewModel
 
-class AlbumActivity : VinilosActivityBase(), AlbumListener {
+class CollectorActivity : VinilosActivityBase(), CollectorListener {
 
-    private lateinit var viewModel: AlbumViewModel
-    private lateinit var viewAdapter: AlbumViewAdapter
+    private lateinit var viewModel: CollectorViewModel
+    private lateinit var viewAdapter: CollectorviewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_albums)
+        setContentView(R.layout.activity_collector)
 
         initializeViewModel()
         setupRecyclerView()
@@ -29,14 +28,14 @@ class AlbumActivity : VinilosActivityBase(), AlbumListener {
     }
 
     private fun initializeViewModel() {
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(application))[AlbumViewModel::class.java]
+        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(application))[CollectorViewModel::class.java]
     }
 
     private fun setupRecyclerView() {
-        findViewById<RecyclerView>(R.id.album_recycler_view).apply {
-            viewAdapter = AlbumViewAdapter(this@AlbumActivity, mutableListOf(), this@AlbumActivity)
+        findViewById<RecyclerView>(R.id.collector_recycler_view).apply {
+            viewAdapter = CollectorViewAdapter(this@AlbumActivity, mutableListOf(), this@CollectorActivity)
             adapter = viewAdapter
-            layoutManager = LinearLayoutManager(this@AlbumActivity)
+            layoutManager = LinearLayoutManager(this@CollectorActivity)
         }
     }
 
@@ -58,23 +57,23 @@ class AlbumActivity : VinilosActivityBase(), AlbumListener {
 
     private fun observeViewModel() {
         with(viewModel) {
-            albums.observe(this@AlbumActivity) { albums ->
-                viewAdapter.updateData(albums)
+            collectors.observe(this@CollectorActivity) { items ->
+                viewAdapter.updateData(items)
             }
 
-            eventNetworkError.observe(this@AlbumActivity) { isNetworkError ->
+            eventNetworkError.observe(this@CollectorActivity) { isNetworkError ->
                 if (isNetworkError && isNetworkErrorShown.value == false) {
-                    this@AlbumActivity.showError("Network error occurred")
+                    this@CollectorActivity.showError("Network error occurred")
                     onNetworkErrorShown()
                 }
             }
         }
     }
 
-    override fun openDetailAlbum(albumId: Int) {
-        Log.d("AlbumActivity", "El Album seleccionado tiene id $albumId")
-        Intent(this, AlbumDetailActivity::class.java).apply {
-            putExtra("albumId", albumId)
+    override fun openDetailCollector(id: Int) {
+        Log.d("CollectorActivity", "El Album seleccionado tiene id $id")
+        Intent(this, CollectorDetailActivity::class.java).apply {
+            putExtra("id", id)
             startActivity(this)
         }
     }

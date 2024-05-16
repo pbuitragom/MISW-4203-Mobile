@@ -73,7 +73,7 @@ class AlbumActivity : VinilosActivityBase(), AlbumListener {
 
     override fun openDetailAlbum(albumId: Int) {
         Log.d("AlbumActivity", "El Album seleccionado tiene id $albumId")
-        Intent(this, AlbumDetailActivity::class.java).apply {
+        Intent(this, CollectorDetailActivity::class.java).apply {
             putExtra("albumId", albumId)
             startActivity(this)
         }
