@@ -57,7 +57,7 @@ class AlbumDetailActivity : VinilosActivityBase() {
             albumReleasedDateText.text = album.releaseDate
             albumGenreText.text = album.genre
             albumRecordLabelText.text = album.recordLabel
-            Glide.with(this@CollectorDetailActivity).load(album.cover).into(albumCoverImage)
+            Glide.with(this@AlbumDetailActivity).load(album.cover).into(albumCoverImage)
         }
     }
 }

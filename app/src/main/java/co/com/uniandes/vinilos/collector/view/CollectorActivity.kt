@@ -10,16 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import co.com.uniandes.vinilos.CollectorListener
 import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
+import co.com.uniandes.vinilos.collector.view.adapter.CollectorViewAdapter
 import co.com.uniandes.vinilos.collector.viewModel.CollectorViewModel
 
 class CollectorActivity : VinilosActivityBase(), CollectorListener {
 
     private lateinit var viewModel: CollectorViewModel
-    private lateinit var viewAdapter: CollectorviewAdapter
+    private lateinit var viewAdapter: CollectorViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_collector)
+        setContentView(R.layout.activity_collectors)
 
         initializeViewModel()
         setupRecyclerView()
@@ -33,7 +34,7 @@ class CollectorActivity : VinilosActivityBase(), CollectorListener {
 
     private fun setupRecyclerView() {
         findViewById<RecyclerView>(R.id.collector_recycler_view).apply {
-            viewAdapter = CollectorViewAdapter(this@AlbumActivity, mutableListOf(), this@CollectorActivity)
+            viewAdapter = CollectorViewAdapter(this@CollectorActivity, mutableListOf(), this@CollectorActivity)
             adapter = viewAdapter
             layoutManager = LinearLayoutManager(this@CollectorActivity)
         }

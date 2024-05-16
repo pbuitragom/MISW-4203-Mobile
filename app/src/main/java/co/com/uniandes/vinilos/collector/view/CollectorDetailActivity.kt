@@ -4,31 +4,30 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import co.com.uniandes.vinilos.VinilosActivityBase
-import co.com.uniandes.vinilos.album.model.Album
-import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
-import co.com.uniandes.vinilos.databinding.ActivityAlbumDetailBinding
-import com.bumptech.glide.Glide
+import co.com.uniandes.vinilos.collector.model.Collector
+import co.com.uniandes.vinilos.collector.viewModel.CollectorViewModel
+import co.com.uniandes.vinilos.databinding.ActivityCollectorDetailBinding
 
 class CollectorDetailActivity : VinilosActivityBase() {
 
-    private var album: Album? = null
-    private lateinit var viewModel: AlbumViewModel
-    private lateinit var binding: ActivityAlbumDetailBinding
+    private var item: Collector? = null
+    private lateinit var viewModel: CollectorViewModel
+    private lateinit var binding: ActivityCollectorDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAlbumDetailBinding.inflate(layoutInflater)
+        binding = ActivityCollectorDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupUI()
         initializeViewModel()
         observeViewModel()
 
-        val albumId: Int = intent.getIntExtra("albumId", -1)
-        Log.d("AlbumDetailActivity", "El albumId es $albumId")
-        if (albumId == -1) finish()
+        val id: Int = intent.getIntExtra("id", -1)
+        Log.d("CollectorDetailActivity", "El id es $id")
+        if (id == -1) finish()
 
-        viewModel.loadAlbum(albumId)
+        viewModel.loadCollector(id)
     }
 
     private fun setupUI() {
@@ -39,25 +38,26 @@ class CollectorDetailActivity : VinilosActivityBase() {
     }
 
     private fun initializeViewModel() {
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(application))[AlbumViewModel::class.java]
+        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(application))[CollectorViewModel::class.java]
     }
 
     private fun observeViewModel() {
-        viewModel.album.observe(this) { album ->
-            album?.let {
+        viewModel.collector.observe(this) { item ->
+            item?.let {
                 updateUI(it)
             }
         }
     }
 
-    private fun updateUI(album: Album) {
+    private fun updateUI(item: Collector) {
         with(binding) {
-            albumTitleText.text = album.name
-            albumDescriptionText.text = album.description
-            albumReleasedDateText.text = album.releaseDate
-            albumGenreText.text = album.genre
-            albumRecordLabelText.text = album.recordLabel
-            Glide.with(this@CollectorDetailActivity).load(album.cover).into(albumCoverImage)
+
+
+            collectorName.text = item.name
+            collectorEmailText.text = item.email
+            collectorTelephoneText.text = item.telephone
+
+
         }
     }
 }

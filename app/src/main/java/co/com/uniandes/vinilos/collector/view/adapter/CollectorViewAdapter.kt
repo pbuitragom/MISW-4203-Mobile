@@ -23,24 +23,24 @@ class CollectorViewAdapter(
 
     class CollectorViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.item_collector, parent, false)) {
-        private var imageView: ImageView? = null
-        private var titleTextView: TextView? = null
-        private var detailsTextView: TextView? = null
+        private var name: TextView? = null
+        private var email: TextView? = null
+        private var phone: TextView? = null
 
         init {
-            imageView = itemView.findViewById(R.id.album_cover_image)
-            titleTextView = itemView.findViewById(R.id.album_title_text)
-            detailsTextView = itemView.findViewById(R.id.album_details_text)
+            name = itemView.findViewById(R.id.collector_name)
+            email = itemView.findViewById(R.id.collector_email_text)
+            phone = itemView.findViewById(R.id.collector_telephone_text)
         }
 
         fun bind(item: Collector, listener: CollectorListener) {
-            titleTextView?.text = item.name
-            detailsTextView?.text =
+            name?.text = item.name
+            email?.text =
                 item.email
-            detailsTextView?.text =
+            phone?.text =
                 item.telephone
             itemView.setOnClickListener {
-                Log.e("CollectorViewAdapter", "El album en el adaptador es  ${item} y tiene id ${item.id}")
+                Log.e("CollectorViewAdapter", "El coleccionista en el adaptador es  ${item} y tiene id ${item.id}")
                 listener.openDetailCollector(item.id)
             }
         }
