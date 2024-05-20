@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".performer.view.PerformerActivity">
+    tools:context=".collector.view.CollectorActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarLayout"
@@ -27,7 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/artist_name_text"
+            android:id="@+id/collector_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/backImage"
@@ -64,7 +64,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/artist_image"
+                android:id="@+id/collector_image"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,28 +73,28 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/artist_description_text"
+                android:id="@+id/collector_email_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/artist_image"
+                app:layout_constraintTop_toBottomOf="@+id/collector_image"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/gray"
                 android:textSize="16sp"
                 android:layout_marginStart="10dp"
-                tools:text="Fecha de lanzamiento"/>
+                tools:text="Email"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/artist_birthdate_text"
+                android:id="@+id/collector_telephone_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/artist_description_text"
+                app:layout_constraintTop_toBottomOf="@+id/collector_email_text"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/gray"
                 android:textSize="16sp"
                 android:layout_marginStart="10dp"
-                tools:text="Genero XXXXX"/>
+                tools:text="Phone"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

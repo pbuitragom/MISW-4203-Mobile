@@ -33,12 +33,20 @@
             android:name=".performer.view.PerformerActivity"
             android:exported="true">
 
-
-
         </activity>
         <activity
             android:name=".performer.view.PerformerDetailActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".collector.view.CollectorActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".collector.view.CollectorDetailActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
