@@ -40,7 +40,7 @@ class PerformerViewAdapter(
             imageView?.let {
                 Glide.with(itemView.context)
                     .load(performer.image)
-                    //.placeholder(R.drawable.ic_perfomer_placeholder) // Reemplazar con una imagen de placeholder
+                    .placeholder(R.drawable.ic_default_person) // Reemplazar con una imagen de placeholder
                     .into(it)
             }
             itemView.setOnClickListener {

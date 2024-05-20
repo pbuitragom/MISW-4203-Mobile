@@ -3,6 +3,7 @@ package co.com.uniandes.vinilos.album.view
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.album.model.Album
 import co.com.uniandes.vinilos.album.viewModel.AlbumViewModel
@@ -57,7 +58,11 @@ class AlbumDetailActivity : VinilosActivityBase() {
             albumReleasedDateText.text = album.releaseDate
             albumGenreText.text = album.genre
             albumRecordLabelText.text = album.recordLabel
-            Glide.with(this@AlbumDetailActivity).load(album.cover).into(albumCoverImage)
+
+            Glide.with(this@AlbumDetailActivity)
+                .load(album.cover)
+                .error(R.drawable.ic_default_album)
+                .into(albumCoverImage)
         }
     }
 }

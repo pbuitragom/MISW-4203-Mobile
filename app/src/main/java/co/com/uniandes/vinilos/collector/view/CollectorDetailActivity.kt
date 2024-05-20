@@ -2,11 +2,14 @@ package co.com.uniandes.vinilos.collector.view
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
+import co.com.uniandes.vinilos.R
 import co.com.uniandes.vinilos.VinilosActivityBase
 import co.com.uniandes.vinilos.collector.model.Collector
 import co.com.uniandes.vinilos.collector.viewModel.CollectorViewModel
 import co.com.uniandes.vinilos.databinding.ActivityCollectorDetailBinding
+import com.bumptech.glide.Glide
 
 class CollectorDetailActivity : VinilosActivityBase() {
 
@@ -50,12 +53,16 @@ class CollectorDetailActivity : VinilosActivityBase() {
     }
 
     private fun updateUI(item: Collector) {
+        val image = findViewById<ImageView>(R.id.collector_image)
         with(binding) {
-
 
             collectorName.text = item.name
             collectorEmailText.text = item.email
             collectorTelephoneText.text = item.telephone
+
+            Glide.with(this@CollectorDetailActivity)
+                .load(R.drawable.ic_default_person)
+                .into(image)
 
 
         }

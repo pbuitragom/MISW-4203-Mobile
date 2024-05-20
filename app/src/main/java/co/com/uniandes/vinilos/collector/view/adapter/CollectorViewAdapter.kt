@@ -23,11 +23,13 @@ class CollectorViewAdapter(
 
     class CollectorViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.item_collector, parent, false)) {
-        private var name: TextView? = null
-        private var email: TextView? = null
-        private var phone: TextView? = null
+            private var image: ImageView? = null
+            private var name: TextView? = null
+            private var email: TextView? = null
+            private var phone: TextView? = null
 
         init {
+            image = itemView.findViewById(R.id.collector_image)
             name = itemView.findViewById(R.id.collector_name)
             email = itemView.findViewById(R.id.collector_email_text)
             phone = itemView.findViewById(R.id.collector_telephone_text)
@@ -39,6 +41,11 @@ class CollectorViewAdapter(
                 item.email
             phone?.text =
                 item.telephone
+            image?.let {
+                Glide.with(itemView.context)
+                    .load(R.drawable.ic_default_person)
+                    .into(it)
+            }
             itemView.setOnClickListener {
                 Log.e("CollectorViewAdapter", "El coleccionista en el adaptador es  ${item} y tiene id ${item.id}")
                 listener.openDetailCollector(item.id)

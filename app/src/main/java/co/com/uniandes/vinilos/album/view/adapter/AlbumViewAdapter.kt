@@ -40,7 +40,7 @@ class AlbumViewAdapter(
             imageView?.let {
                 Glide.with(itemView.context)
                     .load(album.cover)
-                    //.placeholder(R.drawable.ic_album_placeholder) // Reemplazar con una imagen de placeholder
+                    .placeholder(R.drawable.ic_default_album) // Reemplazar con una imagen de placeholder
                     .into(it)
             }
             itemView.setOnClickListener {
