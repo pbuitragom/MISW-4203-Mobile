@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,7 @@ class CollectorActivity : VinilosActivityBase(), CollectorListener {
         setupRecyclerView()
         setupSearchView()
         observeViewModel()
+
     }
 
     private fun initializeViewModel() {
