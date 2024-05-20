@@ -46,7 +46,6 @@ class AlbumServiceAdapter(context: Context) {
                     val client = HttpClient(Android)
                     val response: HttpResponse = client.post {
                         url("$BASE_URL$path")
-
                     }
                     if (response.status == HttpStatusCode.Created) {
                         JSONObject(response.toString())

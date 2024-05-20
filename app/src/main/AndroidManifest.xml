@@ -47,6 +47,8 @@
             android:name=".collector.view.CollectorDetailActivity"
             android:exported="true" />
 
+        <activity android:name=".collector.view.CreateCollectorActivity" />
+
     </application>
 
 </manifest>

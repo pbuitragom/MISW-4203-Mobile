@@ -10,6 +10,10 @@
         android:id="@+id/nav_collectors"
         android:title="Coleccionistas" />
 
+    <item
+        android:id="@+id/nav_create_collector"
+        android:title="Crear Coleccionista" />
+
 </menu>
 
 <!--

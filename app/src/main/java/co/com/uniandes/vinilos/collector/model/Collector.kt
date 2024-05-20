@@ -10,3 +10,7 @@ data class Collector (
     val telephone:String,
     val email:String
 ): Serializable
+
+fun Collector.toDTO(): CollectorDTO {
+    return CollectorDTO(name, telephone, email)
+}

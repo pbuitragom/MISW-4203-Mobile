@@ -7,4 +7,5 @@ interface CollectorRepository{
 
     fun getCollector(collectorId: Int): LiveData<Collector?>
     fun getCollectors():  LiveData<List<Collector>>
+    suspend fun save(collector: Collector): Boolean
 }
