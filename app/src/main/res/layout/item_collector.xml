@@ -13,7 +13,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/album_cover_image"
+            android:id="@+id/collector_image"
             android:layout_width="56dp"
             android:layout_height="65dp" />
 
@@ -26,17 +26,24 @@
             android:paddingEnd="16dp">
 
             <TextView
-                android:id="@+id/album_title_text"
+                android:id="@+id/collector_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Album 1"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+                android:text="Coleccionista"
+                android:textAppearance="?attr/textAppearanceBody2" />
 
             <TextView
-                android:id="@+id/album_details_text"
+                android:id="@+id/collector_email_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Performer, Performer, Performer"
+                android:text="Email de coleccionista"
+                android:textAppearance="?attr/textAppearanceBody2" />
+
+            <TextView
+                android:id="@+id/collector_telephone_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefono de coleccionista"
                 android:textAppearance="?attr/textAppearanceBody2" />
 
         </LinearLayout>
