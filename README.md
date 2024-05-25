@@ -68,13 +68,10 @@ La aplicación sigue el patrón MVVM y se documenta utilizando diagramas de clas
     - [**Modelo de Navegación**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Modelo-de-Navegaci%C3%B3n)
   - **Vista Funcional**
     - [**Modelo Componente-Conector**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Modelo-Componente-Conector)
-* [**Diseño arquitectónico**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Dise%C3%B1o-Arquitect%C3%B3nico-Sprint-2-%E2%80%90-Vinilos)
-    * [**Diseño de UX/UI**](https://www.figma.com/proto/jrm7H4gss8AXtnhRC3Ar2L/Material-3-Design-Kit-(Community)?node-id=57-47160&scaling=min-zoom&page-id=11%3A1833&starting-point-node-id=57%3A47160)
-    * [**Prototipo digital - Wireframe navegable**](https://www.figma.com/proto/jrm7H4gss8AXtnhRC3Ar2L/Material-3-Design-Kit-(Community)?node-id=57-47160&scaling=min-zoom&page-id=11%3A1833&starting-point-node-id=57%3A47160)
-    * [**Modelo de Navegación**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Modelo-de-Navegaci%C3%B3n)
-  * [**Diagramas de Clases**](https://github.com/pbuitragom/MISW-4203-Mobile/assets/142732610/0bfa1bc0-bd0f-4b8a-a891-83191d5fa3b9)
-  * [**Diagrama de Componentes**](https://github.com/pbuitragom/MISW-4203-Mobile/assets/142732610/283ba833-da26-4bdd-accd-d3fb5dc2ba28)
-  * [**Diagrama de Paquetes**](https://github.com/pbuitragom/MISW-4203-Mobile/assets/142732610/8d3dcda1-7410-4927-8c8b-5da25ec87612)
+* [**Diseño arquitectónico**](https://github.com/pbuitragom/MISW-4203-Mobile/wiki/Dise%C3%B1o-Arquitect%C3%B3nico-Sprint-3-%E2%80%90-Vinilos)
+   * [**Diagramas de Clases**](https://github.com/pbuitragom/MISW-4203-Mobile/assets/142732610/7113d2ae-9206-406b-8d7f-2d9675f83a9b)
+   * [**Diagrama de Componentes**](https://github.com/pbuitragom/MISW-4203-Mobile/assets/142732610/e5578b0b-647f-411d-97ad-986565e10c0c)
+   * [**Diagrama de Paquetes**](https://github.com/pbuitragom/MISW-4203-Mobile/assets/142732610/d5cb3fdd-e180-40f5-b726-61b20fe8308b)
 
 ## Entregables de Sprints
 
