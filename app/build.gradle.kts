@@ -79,6 +79,7 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:2.0.0")
     implementation("io.ktor:ktor-client-json:2.0.0")
     implementation("io.ktor:ktor-client-serialization:2.0.0")
+    implementation(libs.androidx.espresso.contrib)
 
 
     // Dependencias de prueba
