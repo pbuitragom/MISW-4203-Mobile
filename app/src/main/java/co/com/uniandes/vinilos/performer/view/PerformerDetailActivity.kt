@@ -61,6 +61,11 @@ class PerformerDetailActivity : VinilosActivityBase() {
         birthDate.text = performer.birthDate
         Glide.with(this).load(performer.image).into(image)
 
+        Glide.with(this)
+            .load(performer.image)
+            .error(R.drawable.ic_default_person)
+            .into(image)
+
     }
 
 }

@@ -5,6 +5,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import co.com.uniandes.vinilos.album.view.AlbumActivity
+import co.com.uniandes.vinilos.collector.view.CollectorActivity
+import co.com.uniandes.vinilos.collector.view.CreateCollectorActivity
 import co.com.uniandes.vinilos.performer.view.PerformerActivity
 
 abstract class VinilosActivityBase : AppCompatActivity(){
@@ -28,6 +30,16 @@ abstract class VinilosActivityBase : AppCompatActivity(){
             }
             R.id.nav_performers -> {
                 val intent = Intent(this, PerformerActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.nav_collectors -> {
+                val intent = Intent(this, CollectorActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.nav_create_collector -> {
+                val intent = Intent(this, CreateCollectorActivity::class.java)
                 startActivity(intent)
                 true
             }
